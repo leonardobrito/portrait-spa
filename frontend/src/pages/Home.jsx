@@ -9,12 +9,12 @@ function Home() {
 
   return (
     <>
-      <StockTicketSearch className="search-component" />
+      <StockTicketSearch className="home-stock-ticket-search" />
       {error && <span className="home-error">{error}</span>}
 
       {isLoading && <Loading className="home-loading" />}
       {
-        data.length > 0 && <StockTicketTable
+        data.length > 0 && !isLoading && <StockTicketTable
           className="table-component"
           stockTicket={data}
         />

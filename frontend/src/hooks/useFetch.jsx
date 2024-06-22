@@ -8,7 +8,7 @@ const HOST = 'http://localhost:3000'
 const useFetch = (query) => {
   const dispatch = useDispatch()
   const cache = useRef({});
-  const url = `${HOST}/api/v1/search?query=${query}`
+  const url = `${HOST}/api/v1/tickers?ticker_name=${query}`
 
   useEffect(() => {
     if (!query || query.length === 0) return;
@@ -25,11 +25,16 @@ const useFetch = (query) => {
           const response = await fetch(url);
           const data = await response.json();
 
+          if (response.status === 404) {
+            throw new Error(data.message)
+          }
+
           cache.current[url] = data;
           dispatch(fetched(data))
         } catch (err) {
           console.error(err.message)
           dispatch(handleError(err.message))
+          dispatch(fetched([]))
         }
       }
 

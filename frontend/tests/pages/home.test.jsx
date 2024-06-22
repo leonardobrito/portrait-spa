@@ -3,8 +3,6 @@ import { Home } from '../../src/pages/Home.jsx'
 import { renderWithProviders } from '../utils/test-utils.jsx'
 import userEvent from '@testing-library/user-event'
 
-
-// screen.debug();
 describe('Home', async () => {
   beforeEach(() => {
     fetch.resetMocks();
@@ -52,7 +50,7 @@ describe('Home', async () => {
   })
 
   it('should render api error', async () => {
-    const errorMessage = 'fake error message'
+    const errorMessage = 'Fake error message'
     fetch.mockReject(new Error(errorMessage));
     const user = userEvent.setup()
 

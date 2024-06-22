@@ -11,3 +11,10 @@
   justify-content: center;
   margin-top: 300px;
 }
+
+.home-stock-ticket-search {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 44px;
+}
