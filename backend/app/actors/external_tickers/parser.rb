@@ -23,19 +23,22 @@ module ExternalTickers
 
     def parse_ticker_results(external_ticker_results)
       external_ticker_results.map do |external_ticker_result|
-        # TODO: extract keys to a hash
         TickerResult.new(
-          close_price: external_ticker_result["c"],
-          highest_price: external_ticker_result["h"],
-          lowest_price: external_ticker_result["l"],
-          transactions_number: external_ticker_result["n"],
-          open_price: external_ticker_result["o"],
+          close_price: external_ticker_result[label(:close_price)],
+          highest_price: external_ticker_result[label(:highest_price)],
+          lowest_price: external_ticker_result[label(:lowest_price)],
+          transactions_number: external_ticker_result[label(:transactions_number)],
+          open_price: external_ticker_result[label(:open_price)],
           otc: false,
-          aggregate_window_start_at: timestamp_to_datetime(external_ticker_result["t"]),
-          trading_volume: external_ticker_result["v"],
-          volume_weighted_average_price: external_ticker_result["vw"]
+          aggregate_window_start_at: timestamp_to_datetime(external_ticker_result[label(:aggregate_window_start_at)]),
+          trading_volume: external_ticker_result[label(:trading_volume)],
+          volume_weighted_average_price: external_ticker_result[label(:volume_weighted_average_price)]
         )
       end
+    end
+
+    def label(field)
+      PolygonUrlProvider::LABEL_DICTIONARY[field]
     end
 
     def timestamp_to_datetime(timestamp_in_milliseconds)

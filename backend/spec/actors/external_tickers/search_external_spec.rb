@@ -99,6 +99,9 @@ RSpec.describe ExternalTickers::SearchExternal, type: :actor do
 
       it "returns error code" do
         expect(result.error[:code]).to eq(code)
+      end
+
+      it "returns error message" do
         expect(result.error[:message]).to eq(error_message)
       end
     end

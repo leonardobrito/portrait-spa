@@ -6,6 +6,19 @@ class PolygonUrlProvider
   TICKERS_INDEX_URL = "https://api.polygon.io/v2/aggs/ticker"
   DEFAULT_TIMESPAN = "day"
 
+  LABEL_DICTIONARY = {
+    close_price: "c",
+    highest_price: "h",
+    lowest_price: "l",
+    transactions_number: "n",
+    open_price: "o",
+    otc: false,
+    aggregate_window_start_at: "t",
+    trading_volume: "v",
+    volume_weighted_average_price: "vw"
+  }
+
+
   def self.tickers_url(ticker_index_contract:)
     ticker_name = ticker_index_contract[:ticker_name]
     from_date = ticker_index_contract[:from_date] || DEFAULT_FROM_DATE

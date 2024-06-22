@@ -1,20 +1,19 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import './StockTicketSearch.css'
 import { useFetch } from "../hooks/useFetch";
 
 function StockTicketSearch({ ...rest }) {
+  const inputRef = useRef();
   const [query, setQuery] = useState('')
-  const [input, setInput] = useState('')
 
   useFetch(query)
 
-  const handleInputChange = (event) => {
-    setInput(event.target.value)
-  }
-
   const handleSearchSubmit = () => {
-    if (input.length === 0) return;
-    setQuery(input)
+    const { value } = inputRef.current;
+
+    if (value.length === 0) return;
+
+    setQuery(value)
   }
 
   return (
@@ -23,9 +22,9 @@ function StockTicketSearch({ ...rest }) {
         Enter a Stock Ticket
       </label>
       <input
+        ref={inputRef}
         className="search-input"
         id="search"
-        onChange={handleInputChange}
         placeholder="AAPL"
         type="search"
       />
