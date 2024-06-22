@@ -226,8 +226,6 @@ GEM
     ffi (1.16.3)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    graphiql-rails (1.10.0)
-      railties
     graphql (2.3.4)
       base64
     hashie (5.0.0)
@@ -599,7 +597,6 @@ DEPENDENCIES
   dotenv-rails
   dry-validation
   factory_bot_rails
-  graphiql-rails
   graphql
   httparty
   importmap-rails

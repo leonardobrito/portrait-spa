@@ -3,25 +3,25 @@
 require "rails_helper"
 
 RSpec.describe PaperTrail::Version, versioning: true do
-  let(:user) { create(:user, email: "user@email.com") }
+  let(:ticker) { create(:ticker) }
 
   context "when create object in database" do
     it "creates version" do
-      expect(user).to be_persisted
-      expect(user.versions.count).to eq(1)
+      expect(ticker).to be_persisted
+      expect(ticker.versions.count).to eq(1)
     end
   end
 
   context "when update object in database" do
-    let(:update_user) { user.update!(email: "user2@email.com") }
-    let(:user_version) { user.versions }
-    let(:last_user_version) { user_version.last }
-    let(:last_object_version) { PaperTrail.serializer.load(last_user_version.object) }
+    let(:update_ticker) { ticker.update!(average_price: 800.0) }
+    let(:ticker_version) { ticker.versions }
+    let(:last_ticker_version) { ticker_version.last }
+    let(:last_object_version) { PaperTrail.serializer.load(last_ticker_version.object) }
 
-    before { update_user }
+    before { update_ticker }
 
-    it { expect(user_version.count).to eq(2) }
-    it { expect(last_object_version["email"]).to eq("user@email.com") }
+    it { expect(ticker_version.count).to eq(2) }
+    it { expect(last_object_version["average_price"]).to eq(140.0) }
     it { expect(last_object_version["whodunnit"]).to be_nil }
   end
 end

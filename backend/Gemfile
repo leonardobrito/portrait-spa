@@ -119,7 +119,6 @@ group :development, :test do
   gem "dotenv-rails"
   gem "factory_bot_rails"
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "graphiql-rails"
   gem "pry", "~> 0.14.2"
 end
 
