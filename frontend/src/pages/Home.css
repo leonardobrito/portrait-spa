@@ -1,0 +1,13 @@
+.home-error {
+  align-items: center;
+  color: red;
+  display: flex;
+  justify-content: center;
+}
+
+.home-loading {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 300px;
+}

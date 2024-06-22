@@ -1,0 +1,34 @@
+.table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.table {
+  width: 100%;
+}
+
+.table-body tr * {
+  padding: 16px;
+  text-align: center;
+}
+
+.table-body tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+.table-head {
+  background-color: darkgray;
+  color: white;
+}
+
+.table-head__th {
+  font-size: medium;
+  font-weight: 400;
+  padding: 12px;
+}
+
+.td-foot.td-foot {
+  padding: 28px;
+}
