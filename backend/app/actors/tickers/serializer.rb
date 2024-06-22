@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 module Tickers
   class Serializer < Actor
-    input :ticker
+    input :persisted_ticker
 
     output :serialized_ticker
 
     def call
-      self.serialized_ticker = formater(ticker:)
+      self.serialized_ticker = formater(ticker: persisted_ticker)
     end
 
     private

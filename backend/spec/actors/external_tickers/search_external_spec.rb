@@ -79,5 +79,28 @@ RSpec.describe ExternalTickers::SearchExternal, type: :actor do
         expect(result.error[:code]).to eq(code)
       end
     end
+
+    context "when external_ticker does not have results" do
+      let(:httparty_response) { instance_double(HTTParty::Response, body: response_body, code: 200, success?: true) }
+      let(:response_body) do
+        {
+          "ticker" => "AAPL",
+          "queryCount" => 0,
+          "resultsCount" => 0,
+          "adjusted" => true,
+      }.to_json
+      end
+       let(:code) { :not_found }
+       let(:error_message) { "Stock ticker not found!" }
+
+      it "returns ticker with proper fields" do
+        expect(result.failure?).to be_truthy
+      end
+
+      it "returns error code" do
+        expect(result.error[:code]).to eq(code)
+        expect(result.error[:message]).to eq(error_message)
+      end
+    end
   end
 end

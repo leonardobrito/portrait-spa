@@ -14,8 +14,6 @@ module ExternalTickers
     private
 
     def parse_ticker(external_ticker:, ticker_index_contract:)
-      return fail!(error: "Ticker not found!") if external_ticker["results"].nil?
-
       name = external_ticker["ticker"]
       input_params = ticker_index_contract.to_hash
       ticker = Ticker.new(name:, input_params:)

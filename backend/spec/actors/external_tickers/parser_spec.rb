@@ -56,20 +56,5 @@ RSpec.describe ExternalTickers::Parser, type: :actor do
         expect(ticker_result.volume_weighted_average_price).to eq(126.133)
       end
     end
-
-    context "when external_ticker does not have results" do
-      let(:external_ticker) do
-        {
-          "ticker" => "AAPL",
-          "queryCount" => 0,
-          "resultsCount" => 0,
-          "adjusted" => true,
-        }
-      end
-
-      it "returns ticker with proper fields" do
-        expect(result.failure?).to be_truthy
-      end
-    end
   end
 end

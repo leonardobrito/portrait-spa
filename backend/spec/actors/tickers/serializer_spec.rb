@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe Tickers::Serializer, type: :actor do
   describe ".call" do
-    let(:result) { described_class.result(ticker:) }
+    let(:result) { described_class.result(persisted_ticker: ticker) }
     let(:ticker) { create(:ticker, ticker_results: build_list(:ticker_result, 1)) }
 
     it { expect(result.success?).to be true }

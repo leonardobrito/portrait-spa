@@ -5,9 +5,14 @@ module ExternalTickers
     input :ticker_index_contract
 
     output :external_ticker
+    output :ticker_index_contract
 
     def call
-      self.external_ticker = search_external_ticker(ticker_index_contract:)
+      external_ticker = search_external_ticker(ticker_index_contract:)
+
+      return fail!(error: { message: "Stock ticker not found!", code: :not_found }) if external_ticker["results"].nil?
+
+      self.external_ticker = external_ticker
     end
 
     private
