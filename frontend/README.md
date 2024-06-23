@@ -1,5 +1,17 @@
 # React + Vite
 
+## Requirements
+- Node v16.20.2
+- npm 8.19.4
+
+
+## Getting Started
+- npm install
+- npm run dev
+
+## Run tests
+- npm run test
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

@@ -1,6 +1,6 @@
 [![CI](https://github.com/espoo-dev/rails_boilerplate/actions/workflows/ci.yml/badge.svg)](https://github.com/espoo-dev/rails_boilerplate/actions/workflows/ci.yml)
 
-## Requirements
+## Requirements (optional)
 - Docker
 - Docker-compose
 
@@ -13,11 +13,8 @@
 - bin/dev
 - visit http://localhost:3000/
 
-## Graphql
-- visit http://localhost:3000/graphiql
-
 ## Run tests
-- docker compose exec web bundle exec bin/rspec -P ./*/**/*_spec.rb (-P ./*/**/*_spec.rb is needed to run specs from packs)
+- docker compose exec web bundle exec bin/rspec
 - open coverage/index.html (Check coverage report)
 
 ## Check lint
